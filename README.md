@@ -58,8 +58,9 @@ They should be putted into result folder like result/celeba_dcgan/*.jpg....
   title={Learning to Detect Fake Face Images in the Wild},
   author={Hsu, Chih-Chung and Lee, Chia-Yen and Zhuang, Yi-Xiu},
   journal={arXiv preprint arXiv:1809.08754},
+  month={9},
   year={2018}
 }
 
-Hsu, Chih-Chung, Chia-Yen Lee, and Yi-Xiu Zhuang. "Learning to Detect Fake Face Images in the Wild." arXiv preprint arXiv:1809.08754 (2018).
+Hsu, Chih-Chung, Chia-Yen Lee, and Yi-Xiu Zhuang. "Learning to Detect Fake Face Images in the Wild." arXiv preprint arXiv:1809.08754, 24 Sep 2018.
 Hsu, Chih-Chung, Chia-Yen Lee, and Yi-Xiu Zhuang. "Learning to Detect Fake Face Images in the Wild." IEEE Intertional Symposium on Computer, Consumer and Control (IS3C), Taichung, Dec. 2018.
