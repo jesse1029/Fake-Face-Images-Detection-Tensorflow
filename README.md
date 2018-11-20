@@ -1,4 +1,5 @@
-***Recommendation***
+# Introduction
+
 Author: Chih-Chung Hsu (cchsu@mail.npust.edu.tw)
 Department of Management Information Systems
 National Pingtung University of Science and Technology
@@ -12,7 +13,7 @@ Any suggestion/problem is welcome.
 
 ---
 
-# Fake image generator by GANs
+## Fake image generator by GANs
 
 Tensorflow implementation of DCGAN, LSGAN, WGAN and WGAN-GP, and we use DCGAN as the network architecture in all experiments.
 DCGAN: [Unsupervised representation learning with deep convolutional generative adversarial networks](https://arxiv.org/abs/1511.06434)
@@ -22,7 +23,7 @@ WGAN-GP: [Improved Training of Wasserstein GANs](http://arxiv.org/abs/1704.00028
 Forked from https://github.com/LynnHo/DCGAN-LSGAN-WGAN-WGAN-GP-Tensorflow
 
 
-# Prerequisites
+## Prerequisites
 - tensorflow r1.10
 - python 3.5
 
