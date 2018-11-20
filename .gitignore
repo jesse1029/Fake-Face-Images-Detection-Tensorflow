@@ -1,0 +1,7 @@
+*.pyc
+summaries
+sample_images_while_training
+data
+checkpoints
+*dragan*
+logs/sia/events.out.tfevents.1542693769.JESS-NPUSTPC
