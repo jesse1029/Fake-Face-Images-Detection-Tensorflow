@@ -4,7 +4,7 @@ Author: Chih-Chung Hsu (cchsu@mail.npust.edu.tw)
 Department of Management Information Systems
 National Pingtung University of Science and Technology
 
-This code is the implementation of our recent paper released at Setpmeber 2018 -- Learning to Detect Fake Face Images in the Wild (ArXiv: https://arxiv.org/abs/1809.08754)
+This code is the implementation of our recent paper released at September 2018 -- Learning to Detect Fake Face Images in the Wild (ArXiv: https://arxiv.org/abs/1809.08754)
 Any suggestion/problem is welcome. 
 
 - Our GAN synthesizers are based on https://github.com/LynnHo/DCGAN-LSGAN-WGAN-WGAN-GP-Tensorflow
