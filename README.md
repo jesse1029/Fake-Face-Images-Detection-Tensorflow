@@ -5,6 +5,8 @@ Department of Management Information Systems
 National Pingtung University of Science and Technology
 
 This code is the implementation of our recent paper released at September 2018 -- Learning to Detect Fake Face Images in the Wild (ArXiv: https://arxiv.org/abs/1809.08754)
+and our recent paper published on ICIP 2019 -- Y. Zhuang and C. Hsu, "Detecting Generated Image Based on a Coupled Network with Two-Step Pairwise Learning," 2019 IEEE International Conference on Image Processing (ICIP), Taipei, Taiwan, 2019, pp. 3212-3216.
+
 Any suggestion/problem is welcome. 
 
 - Our GAN synthesizers are based on https://github.com/LynnHo/DCGAN-LSGAN-WGAN-WGAN-GP-Tensorflow
@@ -36,7 +38,9 @@ Forked from https://github.com/LynnHo/DCGAN-LSGAN-WGAN-WGAN-GP-Tensorflow
 2. The generated fake images should be located in "result/celeba_[GANNAME]/*.jpg"
 3. Extract aligned CelebA face images from http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html and put them into "data/img_align_celeba/*.jpg"
 4. Start Jupyter notebook (type jupyter notebook on Anaconda console)
-5. Open ResNet_DeepUD.ipynb on the browser and run it. 
+5. Open ResNet_DeepUD.ipynb on the browser and run it. (Contrastive loss version)
+   ResNet_DeepUD_triplet.ipynb (Triplet loss + coupled network)
+
 ...
 ```
 ## Tensorboard
@@ -54,13 +58,19 @@ They should be putted into result folder like result/celeba_dcgan/*.jpg....
 
 
 ## Citation
-@article{hsu2018learning,
-  title={Learning to Detect Fake Face Images in the Wild},
-  author={Hsu, Chih-Chung and Lee, Chia-Yen and Zhuang, Yi-Xiu},
-  journal={arXiv preprint arXiv:1809.08754},
-  month={9},
-  year={2018}
-}
+@INPROCEEDINGS{8803464, 
+author={Y. {Zhuang} and C. {Hsu}}, 
+booktitle={2019 IEEE International Conference on Image Processing (ICIP)}, 
+title={Detecting Generated Image Based on a Coupled Network with Two-Step Pairwise Learning}, 
+year={2019}, 
+volume={}, 
+number={}, 
+pages={3212-3216}, 
+keywords={Forgery detection;generative adversarial networks;triplet loss;deep learning;coupled network}, 
+doi={10.1109/ICIP.2019.8803464}, 
+ISSN={2381-8549}, 
+month={Sep.},}
 
-Hsu, Chih-Chung, Chia-Yen Lee, and Yi-Xiu Zhuang. "Learning to Detect Fake Face Images in the Wild." arXiv preprint arXiv:1809.08754, 24 Sep 2018.
+Y. Zhuang and C. Hsu, "Detecting Generated Image Based on a Coupled Network with Two-Step Pairwise Learning," 2019 IEEE International Conference on Image Processing (ICIP), Taipei, Taiwan, 2019, pp. 3212-3216.
+
 Hsu, Chih-Chung, Chia-Yen Lee, and Yi-Xiu Zhuang. "Learning to Detect Fake Face Images in the Wild." IEEE Intertional Symposium on Computer, Consumer and Control (IS3C), Taichung, Dec. 2018.
