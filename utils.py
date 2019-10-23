@@ -7,6 +7,7 @@ import re
 import scipy
 import numpy as np
 import tensorflow as tf
+import cv2
 
 from collections import OrderedDict
 
@@ -250,7 +251,18 @@ def read_labeled_image_list(image_list_file):
 		filenames.append(filename)
 		
 	return filenames
-	
+
+def read_labeled_image_list_4_ilsvrc(image_list_file):
+	mydir = os.listdir(image_list_file)
+	filenames = []
+	for filename in mydir:
+		mydir2 = os.listdir(image_list_file+filename)
+		for filename2 in mydir2:
+			filename2 = image_list_file+filename+'/'+filename2
+			filenames.append(filename2)
+		
+	return filenames
+
 def disk_image_batch(image_paths, batch_size, shape, preprocess_fn=None, shuffle=True, num_threads=16,
                      min_after_dequeue=100, allow_smaller_final_batch=False, scope=None):
     """
@@ -263,8 +275,10 @@ def disk_image_batch(image_paths, batch_size, shape, preprocess_fn=None, shuffle
     with tf.name_scope(scope, 'disk_image_batch'):
         
         # batch datas
-        image_list = read_labeled_image_list(image_paths)
+#         image_list = read_labeled_image_list(image_paths)
+        image_list = read_labeled_image_list_4_ilsvrc(image_paths)
         data_num = len(image_list)
+        print("#Data is ",data_num)
         image_list = tf.cast(image_list, tf.string)
 
         input_queue = tf.train.slice_input_producer([image_list], shuffle=shuffle)
@@ -283,10 +297,10 @@ def disk_image_batch(image_paths, batch_size, shape, preprocess_fn=None, shuffle
             image = tf.image.random_contrast(image, .95, 1.05)
         crop_size = 108
         re_size = 64
-        image = tf.image.crop_to_bounding_box(image, 65, 35, 108, 108)
+#         image = tf.image.crop_to_bounding_box(image, 65, 35, 108, 108)
         image = tf.to_float(tf.image.resize_images(image, [re_size, re_size], method=tf.image.ResizeMethod.BICUBIC)) / 127.5 - 1
         image = tf.cast(image, tf.float32)
-        
+
         img_batch = tf.train.batch([image], batch_size=batch_size, capacity=32,name='images')
 
         return img_batch, data_num
@@ -350,7 +364,7 @@ def imwrite(image, path):
     if image.ndim == 3 and image.shape[2] == 1:  # for gray image
         image = np.array(image, copy=True)
         image.shape = image.shape[0:2]
-    return scipy.misc.imsave(path, to_range(image, 0, 255, np.uint8))
+    return scipy.misc.imsave(path, to_range(image))
 
 def batchimwrite2(image, path):
     """ save an [-1.0, 1.0] image """
@@ -358,6 +372,29 @@ def batchimwrite2(image, path):
     for i in range(image.shape[0]):
         image = np.array(image, copy=True)
         scipy.misc.imsave("%s%d.jpg"%(path, i), to_range(image[i,:,:,0]))
+        
+def batchsalwrite(image,sal, tis, vis, path):
+    """ save an [-1.0, 1.0] image """
+
+    image = np.array(image, copy=True)
+    sal = np.array(sal, copy=True)
+    for i in range(image.shape[0]):
+        im1 = np.asarray(to_range(image[i,:,:,:]), np.float)
+        scipy.misc.imsave("%s_Original_%d_%d-%d.jpg"%(path, i, tis[i], vis[i]), np.asarray(im1, np.uint8))
+        sal1 = np.asarray(sal[i,:,:], np.float)*255
+        sal1 = np.expand_dims(sal1, 2)
+        sal1 = cv2.resize(sal1, (64,64))
+        sal1 = np.reshape(sal1, [64,64])
+        scipy.misc.imsave("%s_Saliency_%d_%d-%d.jpg"%(path, i, tis[i], vis[i]), np.asarray(sal1, np.uint8))
+        
+        
+        im1[:,:,0]=im1[:,:,0]+sal1*0.4
+        im1[:,:,1]=(im1[:,:,1]-sal1*0.2)
+        im1[:,:,2]=(im1[:,:,2]-sal1*0.2)
+        im1[im1>255]=255
+        im1[im1<0]=0
+        im1 = np.asarray(im1, np.uint8)
+        scipy.misc.imsave("%s%d_%d-%d.jpg"%(path, i, tis[i], vis[i]), im1)
         
 def batchimwrite3(image, path):
     """ save an [-1.0, 1.0] image """
