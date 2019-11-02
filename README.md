@@ -38,8 +38,8 @@ Forked from https://github.com/LynnHo/DCGAN-LSGAN-WGAN-WGAN-GP-Tensorflow
 2. The generated fake images should be located in "result/celeba_[GANNAME]/*.jpg"
 3. Extract aligned CelebA face images from http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html and put them into "data/img_align_celeba/*.jpg"
 4. Start Jupyter notebook (type jupyter notebook on Anaconda console)
-5. Open ResNet_DeepUD.ipynb on the browser and run it. (Contrastive loss version)
-   ResNet_DeepUD_triplet.ipynb (Triplet loss + coupled network)
+5. Open ResNet_DeepUD.ipynb on the browser and run it for IS3C paper results based on contrastive loss (initial work).
+   [Recommend!!] Run ResNet_DeepUD_triplet_TwStreaming.ipynb for our ICIP19 paper results based on triplet loss + coupled network.
 
 ...
 ```
@@ -55,7 +55,20 @@ Use train_celeba_dcgan.py to create fake images model using DCGAN
 Use test_celeba_dcgan.py to create fake images using DCGAN based on learned model.
 They should be putted into result folder like result/celeba_dcgan/*.jpg....
 
+### File List
+For ResNet_DeepUD version, you need to prepare the pairwise file list formatted in the following
+```
+image_path_1 image_path_2 Same_or_not
+...
+```
+where image_path_1 is the path to image 1 and image_path_2 is the path to image 2. The Same_or_not is a label indicator when Same_or_not=1 for images 1 and 2 are the same identity and Same_or_not=0 for another case.
 
+For ResNet_DeepUD_triplet_TwStreaming version, you need to prepare file list formatted in the following:
+```
+image_path_1 Label
+...
+```
+where Label is the identity ID.
 
 ## Citation
 @INPROCEEDINGS{8803464, 
