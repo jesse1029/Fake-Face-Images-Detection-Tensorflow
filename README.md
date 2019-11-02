@@ -59,6 +59,9 @@ They should be putted into result folder like result/celeba_dcgan/*.jpg....
 For ResNet_DeepUD version, you need to prepare the pairwise file list formatted in the following
 ```
 image_path_1 image_path_2 Same_or_not
+image_path_3 image_path_4 Same_or_not
+image_path_5 image_path_6 Same_or_not
+image_path_7 image_path_8 Same_or_not
 ...
 ```
 where image_path_1 is the path to image 1 and image_path_2 is the path to image 2. The Same_or_not is a label indicator when Same_or_not=1 for images 1 and 2 are the same identity and Same_or_not=0 for another case.
@@ -66,6 +69,10 @@ where image_path_1 is the path to image 1 and image_path_2 is the path to image 
 For ResNet_DeepUD_triplet_TwStreaming version, you need to prepare file list formatted in the following:
 ```
 image_path_1 Label
+image_path_2 Label
+image_path_3 Label
+image_path_4 Label
+
 ...
 ```
 where Label is the identity ID.
