@@ -1,8 +1,8 @@
 # Introduction
 
-Author: Chih-Chung Hsu (cchsu@mail.npust.edu.tw)
-Department of Management Information Systems
-National Pingtung University of Science and Technology
+Author: Chih-Chung Hsu (cchsu@gs.ncku.edu.tw)
+Institute of Data Science
+National Chemg Kung University
 
 This code is the implementation of our recent paper released at September 2018 -- Learning to Detect Fake Face Images in the Wild (ArXiv: https://arxiv.org/abs/1809.08754)
 and our recent paper published on ICIP 2019 -- Y. Zhuang and C. Hsu, "Detecting Generated Image Based on a Coupled Network with Two-Step Pairwise Learning," 2019 IEEE International Conference on Image Processing (ICIP), Taipei, Taiwan, 2019, pp. 3212-3216.
