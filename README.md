@@ -43,6 +43,19 @@ Forked from https://github.com/LynnHo/DCGAN-LSGAN-WGAN-WGAN-GP-Tensorflow
 
 ...
 ```
+
+### PyTorch DCGAN training
+
+We now provide a PyTorch re-implementation of the CelebA DCGAN baseline that mirrors the behaviour of `train_celeba_dcgan.py`.
+
+```
+python train_celeba_dcgan_torch.py \
+    --data-root ./data/img_align_celeba/img_align_celeba \
+    --epochs 50 \
+    --batch-size 64
+```
+
+Generated sample grids are written to `./sample_images_while_training/celeba_dcgan_torch/` and checkpoints to `./checkpoints/celeba_dcgan_torch/`. Run `python train_celeba_dcgan_torch.py --help` for the full list of configurable options.
 ## Tensorboard
 ```
 tensorboard --logdir=./logs/sia/
