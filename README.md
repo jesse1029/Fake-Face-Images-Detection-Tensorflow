@@ -43,6 +43,33 @@ Forked from https://github.com/LynnHo/DCGAN-LSGAN-WGAN-WGAN-GP-Tensorflow
 
 ...
 ```
+
+### PyTorch DCGAN training
+
+We now provide a PyTorch re-implementation of the CelebA DCGAN baseline that mirrors the behaviour of `train_celeba_dcgan.py`.
+
+```
+python train_celeba_dcgan_torch.py \
+    --data-root ./data/img_align_celeba/img_align_celeba \
+    --epochs 50 \
+    --batch-size 64
+```
+
+Generated sample grids are written to `./sample_images_while_training/celeba_dcgan_torch/` and checkpoints to `./checkpoints/celeba_dcgan_torch/`. Run `python train_celeba_dcgan_torch.py --help` for the full list of configurable options.
+
+### Convert TensorFlow checkpoints to PyTorch
+
+If you have an existing TensorFlow checkpoint created by `train_celeba_dcgan.py` you can convert it into a PyTorch checkpoint
+that is compatible with `train_celeba_dcgan_torch.py` and other PyTorch utilities in this repository.
+
+```
+python convert_tf_checkpoint_to_torch.py \
+    checkpoints/celeba_dcgan/model-100000 \
+    checkpoints/celeba_dcgan_torch/model-100000.pt
+```
+
+Pass `--latent-dim` or `--channels` if you trained with non-default hyper-parameters. The converter recreates the TensorFlow
+graph defined in `models_64x64.py`, loads the weights, and transfers them into the matching modules in `models_64x64_torch.py`.
 ## Tensorboard
 ```
 tensorboard --logdir=./logs/sia/
